@@ -16,7 +16,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="span6">Copyright © 2013 Shapebootstrap | All Rights Reserved </br>
-			<small>Aliquam tincidunt mauris eu risus.</small>
+				<small>Aliquam tincidunt mauris eu risus.</small>
+			<div>
 		</div>
 		<div class="span6">
 			<div class="social pull-right" data-test="footer-links">
