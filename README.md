@@ -44,8 +44,10 @@
 * //footer
 * //footer/div
 * //footer/div/div/div/small
-* //div[@class="span6"]
+* (//div[@class="span6"])[1]
+* //div[@class="social pull-right"]
 * //div[contains(@class,"social")]
+* //div[contains(@class,"social")]/a[1]
 * //div[@data-test='footer-links']
 
 Referencje: https://saucelabs.com/resources/articles/selenium-tips-css-selectors
