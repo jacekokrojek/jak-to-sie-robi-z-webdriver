@@ -21,7 +21,13 @@ public class DropdownTest {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "etc/chromedriver.exe");
+        String os = System.getProperty("os.name").toLowerCase();
+        if(os.indexOf("win") >= 0) {
+            System.setProperty("webdriver.chrome.driver", "../drivers/chromedriver.exe");
+        } else {
+            System.setProperty("webdriver.chrome.driver", "../drivers/chromedriver");
+        }
+
         driver = new ChromeDriver();
     }
 
