@@ -9,8 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class UploadTest {
     private WebDriver driver;
@@ -36,7 +35,7 @@ public class UploadTest {
         driver.findElement(By.id("file-upload")).sendKeys(path);
         driver.findElement(By.id("file-submit")).click();
         String text = driver.findElement(By.id("uploaded-files")).getText();
-        assertThat(text, is(equalTo(filename)));
+        assertEquals(filename, text);
     }
 
 

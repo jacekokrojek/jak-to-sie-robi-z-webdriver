@@ -10,8 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class CheckboxTest {
     private WebDriver driver;
@@ -46,15 +45,15 @@ public class CheckboxTest {
     public void checkboxOption1Test() throws Exception {
         driver.get("http://the-internet.herokuapp.com/checkboxes");
         WebElement checkbox = driver.findElement(By.cssSelector("form input:nth-of-type(2)"));
-        assertThat(checkbox.getAttribute("checked"), is(not("null")));
-        assertThat(checkbox.getAttribute("checked"), is("true"));
+        assertTrue(checkbox.getAttribute("checked") != "null");
+        assertEquals("true", checkbox.getAttribute("checked"));
     }
 
     @Test
     public void checkboxOption2Test() throws Exception {
         driver.get("http://the-internet.herokuapp.com/checkboxes");
         WebElement checkbox = driver.findElement(By.cssSelector("form input:nth-of-type(2)"));
-        assertThat(checkbox.isSelected(), is(true));
+        assertEquals(true, checkbox.isSelected());
     }
 
     @After
