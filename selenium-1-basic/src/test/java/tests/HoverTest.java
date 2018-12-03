@@ -11,15 +11,20 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertEquals;
 
 public class HoverTest {
     private WebDriver driver;
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "etc/chromedriver.exe");
+        String os = System.getProperty("os.name").toLowerCase();
+        if(os.indexOf("win") >= 0) {
+            System.setProperty("webdriver.chrome.driver", "../drivers/chromedriver.exe");
+        } else {
+            System.setProperty("webdriver.chrome.driver", "../drivers/chromedriver");
+        }
+
         driver = new ChromeDriver();
     }
 
@@ -32,8 +37,10 @@ public class HoverTest {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(
                 "figcaption")));
-        assertThat(driver.findElement(By.className("figcaption")).isDisplayed(), is(
-                Boolean.TRUE));
+        assertEquals(
+                Boolean.TRUE,
+                driver.findElement(By.className("figcaption")).isDisplayed()
+        );
     }
 
     @After
