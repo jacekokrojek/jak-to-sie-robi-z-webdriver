@@ -5,7 +5,7 @@ plugins {
 sourceCompatibility = 1.8
 
 // Odkomentuj sekcje poniżej w czasie pracy z dostępem do internetu
-/* 
+
 repositories {
 	mavenCentral()
 }
@@ -13,15 +13,14 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
-    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.14.0'
-    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version : '3.14.0'    
+    testCompile("io.github.bonigarcia:webdrivermanager:3.0.0")
 }
-*/
+
 
 // Odkomentuj sekcje poniżej w czasie pracy bez dostępu do internetu
-dependencies {
-	testCompile fileTree(dir: 'libs', include: ['*.jar'])
-}
+//dependencies {
+//	testCompile fileTree(dir: 'libs', include: ['*.jar'])
+//}
 
 // Task kopijuący pliki jar do katalogu libs
 task copyDepJars(type: Copy) {

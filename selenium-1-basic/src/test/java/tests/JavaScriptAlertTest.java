@@ -8,15 +8,20 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class JavaScriptAlertTest {
     private WebDriver driver;
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "etc/chromedriver.exe");
+        String os = System.getProperty("os.name").toLowerCase();
+        if(os.indexOf("win") >= 0) {
+            System.setProperty("webdriver.chrome.driver", "../drivers/chromedriver.exe");
+        } else {
+            System.setProperty("webdriver.chrome.driver", "../drivers/chromedriver");
+        }
+
         driver = new ChromeDriver();
     }
 
@@ -27,7 +32,7 @@ public class JavaScriptAlertTest {
         Alert popup = driver.switchTo().alert();
         popup.accept();
         String result = driver.findElement(By.id("result")).getText();
-        assertThat(result, is(equalTo("You clicked: Ok")));
+        assertEquals("You clicked: Ok", result);
     }
     @After
     public void tearDown() {

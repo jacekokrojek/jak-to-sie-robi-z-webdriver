@@ -1,5 +1,6 @@
 package tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Rule;
 import org.junit.rules.ExternalResource;
 import org.openqa.selenium.WebDriver;
@@ -19,13 +20,13 @@ public class Base {
         @Override
         protected void before() throws Throwable {
             if (browser.equals("firefox")) {
-                System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/vendor/geckodriver.exe");
+                WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
             } else if (browser.equals("chrome")) {
-                System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/vendor/chromedriver.exe");
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
             }else if (browser.equals("ie")) {
-                System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "/vendor/IEDriverServer.exe");
+                WebDriverManager.iedriver().setup();
                 driver = new InternetExplorerDriver();
             }
         }

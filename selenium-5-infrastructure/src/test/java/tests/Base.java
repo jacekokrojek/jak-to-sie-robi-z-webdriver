@@ -1,10 +1,13 @@
 package tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Rule;
 import org.junit.rules.ExternalResource;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.io.File;
 
 public class Base {
 
@@ -15,10 +18,7 @@ public class Base {
 
         @Override
         protected void before() throws Throwable {
-            // System.setProperty("webdriver.gecko.driver",
-            //      System.getProperty("user.dir") + "/vendor/geckodriver");
-            // driver = new FirefoxDriver();
-            System.setProperty("webdriver.chrome.driver", "etc/chromedriver.exe");
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }
 

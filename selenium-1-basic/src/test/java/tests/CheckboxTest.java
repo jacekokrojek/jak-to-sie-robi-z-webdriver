@@ -10,15 +10,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class CheckboxTest {
     private WebDriver driver;
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "etc/chromedriver.exe");
+        String os = System.getProperty("os.name").toLowerCase();
+        if(os.indexOf("win") >= 0) {
+            System.setProperty("webdriver.chrome.driver", "../drivers/chromedriver.exe");
+        } else {
+            System.setProperty("webdriver.chrome.driver", "../drivers/chromedriver");
+        }
+
         driver = new ChromeDriver();
     }
 
@@ -40,15 +45,15 @@ public class CheckboxTest {
     public void checkboxOption1Test() throws Exception {
         driver.get("http://the-internet.herokuapp.com/checkboxes");
         WebElement checkbox = driver.findElement(By.cssSelector("form input:nth-of-type(2)"));
-        assertThat(checkbox.getAttribute("checked"), is(not("null")));
-        assertThat(checkbox.getAttribute("checked"), is("true"));
+        assertTrue(checkbox.getAttribute("checked") != "null");
+        assertEquals("true", checkbox.getAttribute("checked"));
     }
 
     @Test
     public void checkboxOption2Test() throws Exception {
         driver.get("http://the-internet.herokuapp.com/checkboxes");
         WebElement checkbox = driver.findElement(By.cssSelector("form input:nth-of-type(2)"));
-        assertThat(checkbox.isSelected(), is(true));
+        assertEquals(true, checkbox.isSelected());
     }
 
     @After

@@ -12,8 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class DropdownTest {
 
@@ -21,7 +20,13 @@ public class DropdownTest {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "etc/chromedriver.exe");
+        String os = System.getProperty("os.name").toLowerCase();
+        if(os.indexOf("win") >= 0) {
+            System.setProperty("webdriver.chrome.driver", "../drivers/chromedriver.exe");
+        } else {
+            System.setProperty("webdriver.chrome.driver", "../drivers/chromedriver");
+        }
+
         driver = new ChromeDriver();
     }
 
@@ -41,7 +46,7 @@ public class DropdownTest {
                 selectedOption = options.get(i).getText();
             }
         }
-        assertThat(selectedOption, is("Option 1"));
+        assertEquals("Option 1", selectedOption);
     }
 
     @Test
@@ -49,15 +54,14 @@ public class DropdownTest {
         driver.get("http://the-internet.herokuapp.com/dropdown");
         Select selectList = new Select(driver.findElement(By.id("dropdown")));
         selectList.selectByVisibleText("Option 1");
-        assertThat(selectList.getFirstSelectedOption().getText(), is(equalTo("Option 1"
-        )));
+        assertEquals("Option 1", selectList.getFirstSelectedOption().getText());
     }
 
     @Test
     public void test() {
         driver.get("http://the-internet.herokuapp.com/dropdown");
         Select dropdown = new Select(driver.findElement(By.id("dropdown")));
-        assertThat(dropdown.getOptions().get(0).isEnabled(), is(false));
+        assertEquals(false, dropdown.getOptions().get(0).isEnabled());
     }
 
     @After
