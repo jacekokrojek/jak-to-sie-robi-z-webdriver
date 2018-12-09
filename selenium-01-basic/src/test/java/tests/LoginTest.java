@@ -22,16 +22,14 @@ public class LoginTest {
             System.setProperty("webdriver.chrome.driver", "../drivers/chromedriver.exe");
         } else {
             System.setProperty("webdriver.chrome.driver", "../drivers/chromedriver");
-        }
-
+        }   
         driver = new ChromeDriver();
     }
 
-    By username = By.id("username");
     @Test
     public void whenLoggedInWithCorrectCredentials_thenSuccessVisible() {
         driver.get("http://the-internet.herokuapp.com/login");
-        driver.findElement(username).sendKeys("tomsmith");
+        driver.findElement(By.id("username")).sendKeys("tomsmith");
         driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
         driver.findElement(By.cssSelector("button")).click();
         WebElement message = driver.findElement(By.cssSelector(".flash.success"));
