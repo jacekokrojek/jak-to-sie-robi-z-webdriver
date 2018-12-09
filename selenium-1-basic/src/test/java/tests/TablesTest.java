@@ -73,11 +73,15 @@ public class TablesTest {
     @Test
     public void withHelpfulMarkup() {
         driver.get("http://the-internet.herokuapp.com/tables");
-        driver.findElement(By.cssSelector("#table2 thead .dues")).click();
-        List<WebElement> dues = driver.findElements(By.cssSelector("#table2 tbody .dues"));
+        WebElement table2 = driver.findElement(By.cssSelector("#table2"));
+        table2.findElement(By.cssSelector("thead .dues")).click();
+        List<WebElement> dues = table2.findElements(By.cssSelector("tbody .dues"));
                 List<Double> dueValues = new LinkedList<Double>();
         for(WebElement element : dues){
-            dueValues.add(Double.parseDouble(element.getText().replace("$", "")));
+            String valueWithDolarSign = element.getText();
+            String sValue = valueWithDolarSign.replace("$", "");
+            Double value = Double.parseDouble(sValue);
+            dueValues.add(value);
         }
         for(int counter = 0; counter < dueValues.size() - 1; counter++){
             assertThat(dueValues.get(counter), is(lessThanOrEqualTo(dueValues.get(counter + 1))));

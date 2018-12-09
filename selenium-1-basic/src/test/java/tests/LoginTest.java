@@ -6,8 +6,10 @@ import org.junit.After;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class LoginTest {
@@ -19,14 +21,16 @@ public class LoginTest {
         driver = new ChromeDriver();
     }
 
+    By username = By.id("username");
     @Test
     public void whenLoggedInWithCorrectCredentials_thenSuccessVisible() {
         driver.get("http://the-internet.herokuapp.com/login");
-        driver.findElement(By.id("username")).sendKeys("tomsmith");
+        driver.findElement(username).sendKeys("tomsmith");
         driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
         driver.findElement(By.cssSelector("button")).click();
-        assertTrue("success  message  not  present",
-                driver.findElement(By.cssSelector(".flash.success")).isDisplayed());
+        WebElement message = driver.findElement(By.cssSelector(".flash.success"));
+        assertTrue( message.isDisplayed() );
+        assertTrue( message.getText().contains("You logged into a secure area!") );
     }
 
     /**

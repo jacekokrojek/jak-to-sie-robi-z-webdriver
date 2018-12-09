@@ -26,5 +26,5 @@ dependencies {
 // Task kopijuący pliki jar do katalogu libs
 task copyDepJars(type: Copy) {
   from configurations.compile
-  into 'C:\\Users\\athakur\\Desktop\\lib'
+  into 'libs'
 }

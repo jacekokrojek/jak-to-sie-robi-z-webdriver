@@ -6,6 +6,7 @@ import org.junit.After;
 
 import static org.junit.Assert.*;
 
+import org.omg.PortableInterceptor.ServerRequestInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -26,8 +27,7 @@ public class TestLogin {
     @Test
     public void whenLoggedInWithCorrectCredentials_thenSuccessVisible(){
         login.with("tomsmith", "SuperSecretPassword!");
-        assertTrue("success message not present",
-                login.successMessagePresent());
+        assertTrue( login.successMessagePresent());
     }
 
     /**
@@ -35,6 +35,17 @@ public class TestLogin {
      */
     @Test
     public void whenLoggedInWithIncorrectCredentials_thenInvalidPasswordVisible() {
+        login.with("tomsmith", "SuperSecretPasswod!");
+
+        for (char ch: login.getErrorMessage().toCharArray()) {
+            System.out.print((int)ch + ",");
+        }
+        String expected = "Your password is invalid!\n" + (char)215;
+        System.out.println("");
+        for (char ch: expected.toCharArray()) {
+            System.out.print((int)ch + ",");
+        }
+        assertEquals(expected, login.getErrorMessage());
     }
 
     @After
