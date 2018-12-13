@@ -29,7 +29,7 @@ public class LoginTest {
     @Test
     public void whenLoggedInWithCorrectCredentials_thenSuccessVisible() {
         driver.get("http://the-internet.herokuapp.com/login");
-        driver.findElement(By.id("username")).sendKeys("tomsmith");
+        driver.findElement(By.id("usernameInput")).sendKeys("tomsmith");
         driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
         driver.findElement(By.cssSelector("button")).click();
 
@@ -44,7 +44,7 @@ public class LoginTest {
     @Test
     public void whenLoggedInWithIncorrectCredentials_thenInvalidPasswordVisible() {
         driver.get("http://the-internet.herokuapp.com/login");
-        driver.findElement(By.id("username")).sendKeys("tomsmith");
+        driver.findElement(By.id("usernameInput")).sendKeys("tomsmith");
         driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!!");
         driver.findElement(By.cssSelector("button")).click();
 

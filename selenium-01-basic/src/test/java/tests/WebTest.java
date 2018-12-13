@@ -17,6 +17,9 @@ public class WebTest {
     private WebDriver driver;
     HomePage homePage;
     ServicesPage servicesPage;
+    BlogPage blogPage;
+    ContactPage contactPage;
+    SignUpPage signUpPage;
 
     @Before
     public void setUp() {
@@ -33,7 +36,9 @@ public class WebTest {
 
         homePage = new HomePage(driver);
         servicesPage = new ServicesPage(driver);
-
+        blogPage = new BlogPage(driver);
+        contactPage = new ContactPage(driver);
+        signUpPage = new SignUpPage(driver);
     }
 
     @Test
@@ -68,15 +73,35 @@ public class WebTest {
     }
 
     @Test
+    public void shouldNavigateToBlog(){
+        homePage.goToBlog();
+        assertTrue(blogPage.getTitle().contains("Blog"));
+    }
+
+    @Test
+    public void shouldNavigateToContact(){
+        homePage.goToContact();
+        assertTrue(contactPage.getTitle().contains("Contact"));
+    }
+
+    @Test
     public void shouldRegister(){
-        driver.get("http://jacekokrojek.github.io/jak-to-zrobic-w-js/signup.html");
-        driver.findElement(By.id("usernamesignup")).sendKeys("Jacek");
-        driver.findElement(By.id("emailsignup")).sendKeys("jacek@mail.com");
-        driver.findElement(By.id("passwordsignup")).sendKeys("Jacek");
-        driver.findElement(By.id("passwordsignup_confirm")).sendKeys("Jacek");
-        driver.findElement(By.cssSelector(".signin a.btn")).click();
+        signUpPage.complete("Jacek", "jacek@mail.com", "1234", "1234");
         assertEquals("Thank you for registration", driver.findElement(By.cssSelector("h2")).getText());
     }
+//    @Test
+//    public void shouldRegister(){
+//
+//        driver.get("http://jacekokrojek.github.io/jak-to-zrobic-w-js/signup.html");
+//        driver.findElement(By.id("usernamesignup")).sendKeys("Jacek");
+//        driver.findElement(By.id("emailsignup")).sendKeys("jacek@mail.com");
+//        driver.findElement(By.id("passwordsignup")).sendKeys("Jacek");
+//        driver.findElement(By.id("passwordsignup_confirm")).sendKeys("Jacek");
+//        driver.findElement(By.cssSelector(".signin a.btn")).click();
+//        assertEquals("Thank you for registration", driver.findElement(By.cssSelector("h2")).getText());
+//    }
+
+
 
     @After
     public void tearDown() {

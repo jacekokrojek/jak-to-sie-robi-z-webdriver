@@ -8,6 +8,8 @@ public class HomePage {
     WebDriver driver;
     By bannerHeader = By.cssSelector("div.active.item h1");
     By servicesLink = By.linkText("Services");
+    By blogLink = By.linkText("Blog");
+    By contactLink = By.linkText("Contact");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -21,4 +23,13 @@ public class HomePage {
     public void goToServices(){
         driver.findElement(servicesLink).click();
     }
+
+    public void goToBlog() {
+        driver.findElement(blogLink).click();
+    }
+
+    public void goToContact() {
+        driver.findElement(contactLink).click();
+    }
+
 }
