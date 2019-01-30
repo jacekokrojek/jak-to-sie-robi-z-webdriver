@@ -1,3 +1,18 @@
+# Przygotowanie środowiska
+
+## Instalacja Javy
+ UWAGA! Jeśli posiadasz już Javę na swoim komputerze ale w niższej wersji, to zaktualizuj ją do wersji 11 lub usuń całkowicie i zainstaluj ponownie według poniższej instrukcji!
+ 
+ 1. Wejdź na stronę https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html
+ 2. Pobierz wesję dla Windows w formacie .exe
+ 3. Otwórz pobrany plik i zainstaluj Javę (wszystkie ustawienia podczas instalacji pozostaw domyślne)
+ 4. Ustaw zmienną środowiskową JAVA_HOME (instrukcja jak to zrobić dla poszczególnych wersji Windows znajduje się tutaj: https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html)
+ 
+## Instalacja IntelliJ IDEA
+ 1. Wejdź na stronę https://www.jetbrains.com/idea/download/#section=windows
+ 2. Pobierz wersję Community (jest darmowa) dla Windows
+ 3. Otwórz poprany plik i zainstaluj aplikację (można zostawić wszystkie ustawienia domyślne, nie powinno to stanowić problemu)
+
 # Wyszukiwanie elemntów z wykorzystaniem Selenium 
 
 ## Objekt By
