@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static tests.Config.baseUrl;
+import static spring_petclinic_web_tests.src.test.java.tests.Config.baseUrl;
 
 public class Base {
 

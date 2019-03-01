@@ -28,6 +28,7 @@ public class OwnerEndpointTest {
         RestAssured.basePath = "/petclinic";
     }
 
+    @Test
     public void shouldReturnPreDefinedOwners() {
         when().
                 get("/api/owners").

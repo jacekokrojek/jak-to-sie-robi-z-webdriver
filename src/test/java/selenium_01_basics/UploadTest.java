@@ -29,7 +29,7 @@ public class UploadTest {
     @Test
     public void uploadFile() throws Exception {
         String filename = "some-file.txt";
-        File file = new File(filename);
+        File file = new File("src/test/java/selenium_01_basics/" + filename);
         String path = file.getAbsolutePath();
         driver.get("http://the-internet.herokuapp.com/upload");
         driver.findElement(By.id("file-upload")).sendKeys(path);

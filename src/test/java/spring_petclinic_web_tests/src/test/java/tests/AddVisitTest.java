@@ -3,7 +3,6 @@ package spring_petclinic_web_tests.src.test.java.tests;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import spring_petclinic_web_tests.images.src.test.java.pageobjects.*;
 import spring_petclinic_web_tests.src.test.java.pageobjects.*;
 
 public class AddVisitTest extends Base {
