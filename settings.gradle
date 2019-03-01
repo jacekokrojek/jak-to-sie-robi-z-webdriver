@@ -1,0 +1,3 @@
+rootProject.name = 'java-selenium-workshop'
+include 'spring-petclinic-web-tests'
+

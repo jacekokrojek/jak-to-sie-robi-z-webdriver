@@ -1,6 +1,3 @@
-*/.gradle/
-*/.idea/
-*/build/
-*/out/
-*/libs/
-*/.idea/
+.gradle/
+out/
+.idea
