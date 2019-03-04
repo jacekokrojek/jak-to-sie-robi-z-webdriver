@@ -24,5 +24,4 @@ public class DynamicLoading extends Base {
     public Boolean finishTextPresent() {
         return isDisplayed(finishText, 10);
     }
-
 }

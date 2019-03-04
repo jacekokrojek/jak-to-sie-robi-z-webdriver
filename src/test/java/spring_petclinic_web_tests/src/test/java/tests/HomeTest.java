@@ -1,6 +1,7 @@
 package spring_petclinic_web_tests.src.test.java.tests;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import spring_petclinic_web_tests.src.test.java.pageobjects.Home;
 
@@ -17,6 +18,7 @@ public class HomeTest extends Base {
         home = new Home(driver);
     }
 
+    @Ignore
     @Test
     public void whenVisited_thenShouldHaveCorrectTitle() throws IOException {
         assertTrue(imagesEqual(takeScreenshot(),"./images/homepage.png"));

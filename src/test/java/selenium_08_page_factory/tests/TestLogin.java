@@ -1,6 +1,7 @@
 package selenium_08_page_factory.tests;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import selenium_08_page_factory.pageobjects.Login;
 
@@ -22,7 +23,7 @@ public class TestLogin extends Base {
         assertThat(login.successMessagePresent(), equalTo(true));
     }
 
-    @Test
+    @Test @Ignore
     public void failed() {
         login.with("tomsmith", "bad password");
         assertThat(login.failureMessagePresent(), equalTo(true));

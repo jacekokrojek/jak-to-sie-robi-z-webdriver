@@ -2,6 +2,7 @@ package selenium_09_grid.tests;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +15,7 @@ import java.net.URL;
 
 import static org.junit.Assert.assertTrue;
 
+@Ignore
 public class LoginTest {
     private WebDriver driver;
 
