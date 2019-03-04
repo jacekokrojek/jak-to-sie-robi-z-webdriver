@@ -17,13 +17,22 @@ import static org.junit.Assert.assertTrue;
 public class LoginTest {
     private WebDriver driver;
 
+    /**
+     * Before running the test, set up the Selenium Grid.
+     * 1. Download Selenium Standalone Server from: https://www.seleniumhq.org/download/
+     * 2. Follow the instructions provided here: https://github.com/SeleniumHQ/selenium/wiki/Grid2
+     * 3. IMPORTANT: When setting up the node, you need to set the driver path in the CMD line:
+     * java -Dwebdriver.chrome.driver="<FULL_path_to_your_driver>" -jar selenium-server-standalone-<your_version>.jar -role node -hub http://<ip_of_host_machine>:4444/grid/register
+     * @throws MalformedURLException
+     */
+
     @Before
     public void setUp() throws MalformedURLException {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments("--disable-infobars");
         options.addArguments("--no-sandbox");
-        driver = new RemoteWebDriver(new URL("http://192.168.30.1:4444/wd/hub"), options);
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
     }
 
     @Test
