@@ -15,7 +15,7 @@ public class Login extends Base {
 
     public Login(WebDriver driver) {
         super(driver);
-        visit("/login");
+        visit("http://the-internet.herokuapp.com/login");
         assertTrue("The login form is not present",
                 isDisplayed(loginFormLocator));
     }
@@ -27,12 +27,12 @@ public class Login extends Base {
     }
 
     public Boolean successMessagePresent() {
-        isDisplayed(successMessageLocator, 1);
+        isDisplayed(find(successMessageLocator), 1);
         return isDisplayed(successMessageLocator);
     }
 
     public Boolean failureMessagePresent() {
-        isDisplayed(failureMessageLocator, 1);
+        isDisplayed(find(failureMessageLocator), 1);
         return isDisplayed(failureMessageLocator);
     }
 }

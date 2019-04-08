@@ -44,7 +44,17 @@ public class Base {
         }
     }
 
-    public Boolean isDisplayed(By locator, Integer timeout) {
+    public Boolean isDisplayed(WebElement element, Integer timeout) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            wait.until(ExpectedConditions.visibilityOf(element));
+        } catch (org.openqa.selenium.TimeoutException exception) {
+            return false;
+        }
+        return true;
+    }
+
+    public Boolean isPresent(By locator, Integer timeout) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeout);
             wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -53,5 +63,4 @@ public class Base {
         }
         return true;
     }
-
 }

@@ -17,8 +17,12 @@ public class DynamicLoading extends Base {
         click(startButton);
     }
 
-    public Boolean finishTextPresent() {
-        return isDisplayed(finishText, 10);
+    public Boolean isFinishTextDisplayed() {
+        return isDisplayed(find(finishText), 10);
+    }
+
+    public Boolean isFinishTextTextPresent() {
+        return isPresent(finishText, 10);
     }
 
 }
