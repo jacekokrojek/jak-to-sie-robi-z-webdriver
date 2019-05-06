@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id "com.github.ben-manes.versions" version "0.21.0"
+    id "io.qameta.allure" version "2.7.0"
 }
 
 group 'testarmy'
@@ -24,3 +25,15 @@ dependencies {
     testCompile 'org.assertj:assertj-core:3.12.1'
     testImplementation 'org.json:json:20180813'
 }
+
+allure {
+    version = '2.7.0'
+    aspectjweaver = true
+    autoconfigure = true
+
+    useJUnit4 {
+        version = '2.0-BETA10'
+    }
+}
+
+
