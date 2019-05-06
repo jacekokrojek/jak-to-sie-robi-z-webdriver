@@ -1,6 +1,5 @@
-*/.gradle/
-*/.idea/
-*/build/
-*/out/
-*/libs/
-*/.idea/
+.allure/
+.gradle/
+out/
+.idea
+build/
